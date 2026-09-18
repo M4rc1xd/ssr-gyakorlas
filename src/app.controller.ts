@@ -1,5 +1,8 @@
 import { Controller, Get, Render } from '@nestjs/common';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { AppService } from './app.service.js';
+import { Wanted } from './wanted.interface.js';
 
 @Controller()
 export class AppController {
@@ -38,4 +41,10 @@ export class AppController {
 
   @Get('wanted')
   @Render('wanted')
+  getWanted() {
+  const wantedPath = fileURLToPath(new URL('./wanted.json', import.meta.url));
+  const wanted = JSON.parse(readFileSync(wantedPath, 'utf8')) as Wanted;
+
+  return { wanted };
+  }
 }

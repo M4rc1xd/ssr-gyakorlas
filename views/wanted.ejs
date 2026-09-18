@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="kicker">Körözési adatlap</div>
+            <h1><%= wanted.name %></h1>
+        </header>
+
+        <div>
+            <img src="<%= wanted.profile %>" alt="<%= wanted.name %> portréja">
+            <div>
+                <h2>Ismertetőjegyek</h2>
+                <dl>
+                    <dt>Életkor</dt><dd><%= wanted.age %> év</dd>
+                    <dt>Szőrzet</dt><dd><%= wanted.hair %></dd>
+                    <dt>Szemszín</dt><dd><%= wanted.eye %></dd>
+                </dl>
+            </div>
+        </div>
+
+        <section>
+            <h2>Utoljára látták</h2>
+            <p><strong>Időpont:</strong> <%= wanted.lastSeenDate %></p>
+            <p><strong>Helyszín:</strong> <%= wanted.lastSeenAt %></p>
+        </section>
+
+        <section>
+            <h2>Elkövetett csínytevések</h2>
+            <ul><% wanted.crimes.forEach((crime) => { %><li><%= crime %></li><% }) %></ul>
+        </section>
+
+        <section>
+            <h2>Kedvenc időtöltések</h2>
+            <ul><% wanted.hobbies.forEach((hobby) => { %><li><%= hobby %></li><% }) %></ul>
+        </section>
+    </main>
+</body>
+</html>
